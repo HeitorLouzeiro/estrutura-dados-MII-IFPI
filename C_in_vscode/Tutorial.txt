@@ -1,0 +1,5 @@
+Tutorial de como programar C no vscode.
+https://www.youtube.com/watch?v=Mook-z2uvpM&ab_channel=Prof.Rog%C3%A9rioNapole%C3%A3oJr.
+
+Mingw download
+https://sourceforge.net/projects/mingw/
