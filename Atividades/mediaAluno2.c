@@ -1,4 +1,4 @@
-        
+
 /* Um Menu recorrente utilizando um Laço While em junção com um Switch Case
 - assim se o usuário não informar a turma do aluno o programa
 não segue para a inserção do nome e das notas do aluno.
@@ -21,6 +21,7 @@ struct Aluno
     float media;
     float provaFinal;
     char resultadoFinal[20]; // Um array de caracteres para salvar Aprovado, Reprovado
+    float mediaResultadoFinal;
 };
 
 int main() {
@@ -32,7 +33,7 @@ int main() {
 
     /* strcpy serve para copiar uma string para outra. */
     strcpy(aluno.turma, "");
-
+    
     // Loop principal
     while (continuar) {
         int escolha;
@@ -64,13 +65,15 @@ int main() {
 
                     // Calcular a média
                     aluno.media = (aluno.nota1 + aluno.nota2) / 2;
-
+                    
                     // Determinar se o aluno precisa de uma prova final
                     if (aluno.media < 5.0) {
                         printf("O aluno precisa fazer a prova final.\n");
                         printf("Informe a nota da prova final do aluno: ");
                         scanf("%f", &aluno.provaFinal);
-                        if ((aluno.media + aluno.provaFinal) / 2 < 5.0) {
+                        aluno.mediaResultadoFinal = ((aluno.media + aluno.provaFinal) / 2.0);
+                        
+                        if (aluno.mediaResultadoFinal < 5.0) {
                             strcpy(aluno.resultadoFinal, "Reprovado");
                         } else {
                             strcpy(aluno.resultadoFinal, "Aprovado");
@@ -78,14 +81,19 @@ int main() {
                     } else {
                         strcpy(aluno.resultadoFinal, "Aprovado");
                     }
-
-                    float mediaResultadoFinal = (aluno.media + aluno.provaFinal) / 2;
+                    
+                    
 
                     // Imprimir os resultados
                     printf("Nome do aluno: %s\n", aluno.nome);
                     printf("Turma do aluno: %s\n", aluno.turma);
                     printf("Media do aluno: %.2f\n", aluno.media);
-                    printf("Nota da media final do aluno: %.2f\n", mediaResultadoFinal);
+                    if (aluno.mediaResultadoFinal != 0)
+                    {
+                        printf("Nota da media final do aluno: %.2f\n", aluno.mediaResultadoFinal);
+                        aluno.mediaResultadoFinal = 0;
+                    }
+                    
                     printf("Resultado Final: %s\n", aluno.resultadoFinal);
                 }
                 break;
